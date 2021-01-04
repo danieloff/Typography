@@ -4,7 +4,7 @@ using PixelFarm.Drawing;
 namespace Typography.Text
 {
 
-    partial class OpenFontTextService
+    public partial class OpenFontTextService
     { 
         public SvgBmpBuilderFunc SvgBmpBuilder { get; set; } 
     }
