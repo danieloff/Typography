@@ -143,12 +143,24 @@ namespace Typography.Text
 
                 _latestCharIndex = snapToPx.CurrentIndex;
                 _latestAccumulateWidth = snapToPx.AccumWidth;
+
+                _currentTypeface.MGFont.Size = fontSizePoint / 72.0f * 96.0f;
+                var width = _currentTypeface.MGFont.MeasureString(seq.SrcString).X;
+                if (width < _limitWidth) //DEO
+                {
+                    _latestAccumulateWidth = (int)Math.Ceiling(width); //snapToPx.AccumWidth;
+                }
             }
             else
             {
                 var snapToPx = new GlyphPlanSequenceSnapPixelScaleLayout(seq, startAt, len, scale);
                 snapToPx.ReadToEnd();
-                _latestAccumulateWidth = snapToPx.AccumWidth;
+
+                //DEO
+                _currentTypeface.MGFont.Size = fontSizePoint / 72.0f * 96.0f;
+                var width = _currentTypeface.MGFont.MeasureString(seq.SrcString).X;
+
+                _latestAccumulateWidth = (int)Math.Ceiling(width); //snapToPx.AccumWidth;
             }
         }
 
@@ -491,9 +503,9 @@ namespace Typography.Text
             //create glyph-plan ( UnScaled version) and add it to planList                
 
             _glyphLayout.GenerateUnscaledGlyphPlans(output);
-
+            var str = new string(buffer.GetRawCharBuffer(), buffer.start, buffer.len);
             int post_count = output.Count;
-            return new GlyphPlanSequence(output, pre_count, post_count - pre_count);//** 
+            return new GlyphPlanSequence(output, pre_count, post_count - pre_count, str);//** 
         }
 
         public GlyphPlanSequence CreateGlyphPlanSeq(in Typography.Text.TextBufferSpan textBufferSpan)

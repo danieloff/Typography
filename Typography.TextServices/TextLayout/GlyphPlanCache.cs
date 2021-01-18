@@ -75,7 +75,9 @@ namespace Typography.TextLayout
                 glyphLayout.GenerateUnscaledGlyphPlans(_reusableGlyphPlanList);
 
                 int post_count = _reusableGlyphPlanList.Count;
-                planSeq = new GlyphPlanSequence(_reusableGlyphPlanList, pre_count, post_count - pre_count);//**                //
+                var str = new string(buffer.GetRawCharBuffer(), buffer.start, buffer.len);
+
+                planSeq = new GlyphPlanSequence(_reusableGlyphPlanList, pre_count, post_count - pre_count, str);//**                //
 
 #if DEBUG
                 if (!dbug_disableCache)
