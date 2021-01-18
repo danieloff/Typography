@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\PixelFarm\src\PixelFarm\PixelFarm.Drawing\PixelFarm.Drawing.csproj" />
+    <ProjectReference Include="..\..\..\..\SpriteFontPlus\src\SpriteFontPlus.MonoGame.csproj" />
   </ItemGroup>
 
 </Project>

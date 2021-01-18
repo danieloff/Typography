@@ -437,6 +437,9 @@ namespace Typography.OpenFont
 
         internal BitmapFontGlyphSource _bitmapFontGlyphSource;
         public bool IsBitmapFont => _bitmapFontGlyphSource != null;
+
+        public SpriteFontPlus.DynamicSpriteFont MGFont { get; internal set; }
+
         public void ReadBitmapContent(Glyph glyph, System.IO.Stream output)
         {
             _bitmapFontGlyphSource.CopyBitmapContent(glyph, output);

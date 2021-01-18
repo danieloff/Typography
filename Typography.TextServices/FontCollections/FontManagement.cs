@@ -341,6 +341,14 @@ namespace Typography.FontCollections
                     typeface.Filename = installedFont.FontPath;
                     installedFont.ResolvedTypeface = typeface;//cache 
                 }
+                using (var fs = new FileStream(installedFont.FontPath, FileMode.Open, FileAccess.Read))
+                {
+                    //DEO
+
+                    typeface.MGFont = SpriteFontPlus.DynamicSpriteFont.FromTtf(fs, 20);
+                    //
+
+                }
             }
 
             //calculate typeface key for the new create typeface
