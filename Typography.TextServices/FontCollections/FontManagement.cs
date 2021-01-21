@@ -294,6 +294,11 @@ namespace Typography.FontCollections
             LoadFontsFromFolder(fontCollection, "/System/Library/Fonts");
             LoadFontsFromFolder(fontCollection, "/Library/Fonts");
 
+            // Android (https://stackoverflow.com/questions/55036085/how-i-can-get-android-system-fonts-list-that-is-already-installed-and-apply-to-c)
+            LoadFontsFromFolder(fontCollection, "/system/fonts");
+            LoadFontsFromFolder(fontCollection, "/system/font");
+            LoadFontsFromFolder(fontCollection, "/data/fonts");
+
         }
 
         public static IEnumerable<BitposAndAssciatedUnicodeRanges> GetSupportedUnicodeLangIter(this InstalledTypeface instTypeface)
