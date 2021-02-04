@@ -69,7 +69,7 @@ namespace Typography.Text
         public virtual ScriptLang ScriptLang { get; set; }
         public PositionTechnique PositionTechnique { get; set; }
         public bool EnableLigature { get; set; }
-        public bool EnableMultiTypefaces { get; set; }
+        public bool EnableMultiTypefaces { get => true; set { } }
         /// <summary>
         /// draw string at (xpos,ypos), depend on baseline
         /// </summary>
