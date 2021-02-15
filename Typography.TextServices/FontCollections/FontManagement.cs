@@ -350,7 +350,7 @@ namespace Typography.FontCollections
                 {
                     //DEO
 
-                    typeface.MGFont = SpriteFontPlus.DynamicSpriteFont.FromTtf(fs, 20);
+                    typeface.MGFont = SpriteFontPlus.DynamicSpriteFont.FromTtf(fs, 20, installedFont.FontPath);
                     //
 
                 }

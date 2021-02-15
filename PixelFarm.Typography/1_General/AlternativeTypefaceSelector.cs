@@ -116,7 +116,43 @@ namespace Typography.Text
             if (choices.Count > 0)
             {
                 //choose default
-                return new SelectedTypeface(choices[0]);
+
+                //TODO DEO THIS CODE IS DUPLICATED
+                InstalledTypeface selectedTypeface = null;
+
+                bool found = false;
+
+                if (!found)
+                {
+                    foreach (var entry in choices)
+                    {
+                        if (entry.FontName.Contains("UI Emoji"))
+                        {
+                            selectedTypeface = entry;
+                            found = true;
+                        }
+                    }
+                }
+
+                if (!found)
+                {
+                    foreach (var entry in choices)
+                    {
+                        if (entry.FontName.Contains("Emoji"))
+                        {
+                            selectedTypeface = entry;
+                            found = true;
+                        }
+                    }
+                }
+
+                if (!found)
+                {
+                    selectedTypeface = choices[0];
+                }
+
+                //return new SelectedTypeface(choices[0]);
+                return new SelectedTypeface(selectedTypeface);
             }
 
 

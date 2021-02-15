@@ -541,7 +541,42 @@ namespace Typography.FontCollections
                 else if (installedTypefaceList.Count > 0)
                 {
                     InstalledTypeface instTypeface = installedTypefaceList[0];//default
-                    selectedTypeface = this.ResolveTypeface(installedTypefaceList[0]);
+
+                    //TODO DEO THIS CODE IS DUPLICATED
+
+                    selectedTypeface = null;
+
+                    bool found = false;
+
+                    if (!found)
+                    {
+                        foreach (var entry in installedTypefaceList)
+                        {
+                            if (entry.FontName.Contains("UI Emoji"))
+                            {
+                                selectedTypeface = this.ResolveTypeface(entry);
+                                found = true;
+                            }
+                        }
+                    }
+
+                    if (!found)
+                    {
+                        foreach (var entry in installedTypefaceList)
+                        {
+                            if (entry.FontName.Contains("Emoji"))
+                            {
+                                selectedTypeface = this.ResolveTypeface(entry);
+                                found = true;
+                            }
+                        }
+                    }
+
+                    if (!found)
+                    {
+                        selectedTypeface = this.ResolveTypeface(installedTypefaceList[0]);
+                    }
+
                     return selectedTypeface != null;
                 }
             }
